@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class PlayerScript : MonoBehaviour
     bool onGround;
 
     Rigidbody rb;
+
+    int health = 25;
+    int ammo = 10;
+    bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +59,7 @@ public class PlayerScript : MonoBehaviour
         {
             Jump();
         }
+
     }
 
     void Jump()
@@ -63,4 +69,5 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         }
     }
+
 }
