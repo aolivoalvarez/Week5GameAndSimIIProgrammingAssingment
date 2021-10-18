@@ -13,10 +13,6 @@ public class PlayerScript : MonoBehaviour
 
     Rigidbody rb;
 
-    int health = 25;
-    int ammo = 10;
-    bool isDead = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +56,12 @@ public class PlayerScript : MonoBehaviour
             Jump();
         }
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+        SceneManager.LoadScene(1);
     }
 
     void Jump()

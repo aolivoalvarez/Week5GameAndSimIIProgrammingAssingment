@@ -9,9 +9,8 @@ public class GameManager : MonoBehaviour
     public static GameManager manager;
 
     public int playerHealth = 25;
-    int ammo = 10;
+    public int ammo = 10;
     int targets = 3;
-    bool isDead = false;
     bool playerWon;
 
     public GameObject Player;
@@ -37,12 +36,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerHealth <= 0)
         {
-            isDead = false;
             playerWon = false;
-        }
-
-        if (isDead)
-        {
             Destroy(Player.gameObject);
             //SceneManager.LoadScene(2);
         }
