@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class AmmoPickupScript : MonoBehaviour
+public class EndSceneScript : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,9 +18,13 @@ public class AmmoPickupScript : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void Again()
     {
-        GameManager.manager.ammo += 20;
-        Destroy(gameObject);
+        SceneManager.LoadScene(1);
+    }
+
+    public void PressExit()
+    {
+        Application.Quit();
     }
 }

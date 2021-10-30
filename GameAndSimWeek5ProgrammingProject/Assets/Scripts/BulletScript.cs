@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AmmoPickupScript : MonoBehaviour
+public class BulletScript : MonoBehaviour
 {
+    float bulletLifetime = 3;
+    float elapsed = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,12 +16,11 @@ public class AmmoPickupScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        elapsed += Time.deltaTime;
         
-    }
-
-    public void OnCollisionEnter(Collision collision)
-    {
-        GameManager.manager.ammo += 20;
-        Destroy(gameObject);
+        if(elapsed >= bulletLifetime)
+        {
+            Destroy(gameObject);
+        }
     }
 }

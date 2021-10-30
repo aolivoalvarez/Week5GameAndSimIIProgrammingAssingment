@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Target1Script : MonoBehaviour
-
+public class Target2Script : MonoBehaviour
 {
+
     [SerializeField]
     Transform[] placements;
     int index = 0;
@@ -25,7 +25,7 @@ public class Target1Script : MonoBehaviour
     {
         transform.position = Vector3.Lerp(transform.position, currentPlace.position, speed * Time.deltaTime);
 
-        if(Vector3.Distance(transform.position, currentPlace.position) < distance)
+        if (Vector3.Distance(transform.position, currentPlace.position) < distance)
         {
             index++;
 
@@ -53,6 +53,5 @@ public class Target1Script : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         tHealth--;
-        Debug.Log(tHealth);
     }
 }

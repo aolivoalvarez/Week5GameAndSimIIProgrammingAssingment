@@ -13,6 +13,9 @@ public class PlayerScript : MonoBehaviour
 
     Rigidbody rb;
 
+    [SerializeField]
+    Transform cam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +30,19 @@ public class PlayerScript : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        rb.velocity = new Vector3(h * playerSpeed, rb.velocity.y, v * playerSpeed);
+        Vector3 camForward = cam.forward;
+        Vector3 camRight = cam.right;
+
+        camForward.y = 0;
+        camRight.y = 0;
+        camForward.Normalize();
+        camRight.Normalize();
+
+        Vector3 moveDirection = (camForward * v * playerSpeed) + (camRight * h * playerSpeed);
+
+        rb.velocity = new Vector3(moveDirection.x, rb.velocity.y, moveDirection.z);
+
+        //rb.velocity = new Vector3(h * playerSpeed, rb.velocity.y, v * playerSpeed);
 
         Ray groundSearch = new Ray(transform.position, Vector3.down);
 
